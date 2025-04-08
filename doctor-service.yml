@@ -28,3 +28,6 @@ spring:
     bootstrap-servers: ${SPRING_KAFKA_BOOTSTRAP_SERVERS}
 server:
   port: '8080'
+logging:
+  level:
+    io.quarkus.spring.cloud.config: DEBUG # allows to check if config props were loaded from config servers
