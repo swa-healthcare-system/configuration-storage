@@ -28,6 +28,33 @@ spring:
     bootstrap-servers: ${SPRING_KAFKA_BOOTSTRAP_SERVERS}
 server:
   port: '8080'
+eureka:
+  client:
+    service-url:
+      defaultZone: ${SPRING_EUREKA_URL:http://eureka-server:8761/eureka}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+      base-path: /actuator
+  endpoint:
+    prometheus:
+      enabled: 'true'
+  metrics:
+    export:
+      prometheus:
+        enabled: 'true'
+
 logging:
   level:
-    org.springframework.cloud.config: DEBUG # allows to check if config props were loaded from config servers
+    # allows to check if config props were loaded from config server
+    org:
+      springframework:
+        cloud:
+          config: DEBUG
+          netflix:
+            eureka: DEBUG
+    com:
+      netflix:
+        discovery: DEBUG
